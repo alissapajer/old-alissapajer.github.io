@@ -38,6 +38,6 @@ While editing the webiste, I run
 ```
 $ ./site watch
 ```
-The command registers changes to the `_site/` directory and publishes the up-to-date website to `http://127.0.0.1:8000/`. Very useful for immediate feedback!
+This command registers changes to the `_site/` directory and publishes the up-to-date website to `http://127.0.0.1:8000/`. Very useful for immediate feedback!
 
 Also, Hakyll allows you to write all your blog posts in markdown. I've found this [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) essential.
