@@ -2,7 +2,7 @@ body {
     color: black;
     font-size: 16px;
     font-family: Arial, Helvetica, sans-serif;
-    line-height: 22px;
+    line-height: 25px;
     margin: 0px auto 0px auto;
     width: 800px;
 }
@@ -59,4 +59,20 @@ div.info {
 
 img[alt=HaskellRuby] {
     float: right;
+    padding: 10px 10px;
+}
+
+p code,pre {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    overflow: auto;
+    border-radius: 3px;
+}
+
+pre {
+    padding: 6px 10px;
+}
+
+p code {
+    padding: 1px 5px;
 }
