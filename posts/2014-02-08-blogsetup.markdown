@@ -30,6 +30,7 @@ $ ghp-import _site/ -b master -m "commit message"
 ```
 There is an optional flag to push to `master`, but I have been pushing manually so I can review the changes first. And that's it! The only thing I still need to do is the redirect to a domain I own. This is done using a `CNAME` file on the `master` branch. Since my `master` branch is auto-generated I'll need to add this `CNAME` in such a way that it's not deleted when I commit to `master`. 
 
+This only weird thing is that `source` and `master` will permanently diverge.
 
 **Tips:**
 

@@ -42,6 +42,7 @@ $ cabal install hakyll</code></pre>
 <p>To perform this copy, I use <a href="https://github.com/davisp/ghp-import">ghp-import</a> as follows, run from the <code>source</code> branch:</p>
 <pre><code>$ ghp-import _site/ -b master -m &quot;commit message&quot;</code></pre>
 <p>There is an optional flag to push to <code>master</code>, but I have been pushing manually so I can review the changes first. And that’s it! The only thing I still need to do is the redirect to a domain I own. This is done using a <code>CNAME</code> file on the <code>master</code> branch. Since my <code>master</code> branch is auto-generated I’ll need to add this <code>CNAME</code> in such a way that it’s not deleted when I commit to <code>master</code>.</p>
+<p>This only weird thing is that <code>source</code> and <code>master</code> will permanently diverge.</p>
 <p><strong>Tips:</strong></p>
 <p>While editing the webiste, I run</p>
 <pre><code>$ ./site watch</code></pre>
