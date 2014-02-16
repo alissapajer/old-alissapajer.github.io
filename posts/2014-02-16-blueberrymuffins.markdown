@@ -23,6 +23,6 @@ When the [original gravity](http://en.wikipedia.org/wiki/Gravity_%28alcoholic_be
 
 **Time:** `~21 minutes`
 
-**Music:** [Korobeiniki](http://en.wikipedia.org/wiki/Korobeiniki) (aka The Tetris Song) 
+**Music:** [Korobeiniki](http://en.wikipedia.org/wiki/Korobeiniki) (aka *The Tetris Song*) 
 
 Their tops cracked nicely, exposing blueberries within. The blueberry-to-dough ratio is very high, almost `1:1`. They are not particularly sweet, but this is balanced out by the copious blueberries. My only beef with these muffins is that their tops turned out a touch too brown. I've eaten two muffins while writing this post. Yum.
