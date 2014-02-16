@@ -1,6 +1,6 @@
 ---
 title: Blog Setup
-author: LuneBot
+author: LuneTron
 ---
 
 When I started my search for a static site generator, I first came across [Jekyll](https://github.com/jekyll/jekyll). I'm not particularly excited about learning Ruby, but I am excited about learning Haskell.
