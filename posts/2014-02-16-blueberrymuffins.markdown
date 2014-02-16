@@ -5,7 +5,7 @@ author: OvenBird
 
 When the [original gravity](http://en.wikipedia.org/wiki/Gravity_%28alcoholic_beverage%29) (OG) (relative density compared to water) of [yesterday's](http://www.sketchbrewing.com/2014/02/coffee-stout-round-2.html) chocoloate coffee stout read only `1.044`, we disolved all the sugar in the house into the wort, which raised the OG to a more acceptable level of `1.055`. Thus today when I decided to make blueberry muffins, I found we had no sugar. If not in Bavaria, I'd probably have gone to der Supermarkt to buy Zucker. But since every store except those in the [Hauptbahnhof](http://en.wikipedia.org/wiki/M%C3%BCnchen_Hauptbahnhof) is closed, I opted for the more mellifluous harmony of honey and applesauce.
 
-![BlueberryMuffins](/images/BlueberryMuffins.jpg "blueberry muffins")
+![BlueberryMuffins](http://i.imgur.com/bRXvQ5F.jpg "blueberry muffins")
 <p style="margin: 0px"><b>Ingredients:</b></p>
  * 3/2 cup flour (Weizenmehl Vollkorn)  
  * 1/2 cup oats (Dinkelflocken Kleinblatt)   
