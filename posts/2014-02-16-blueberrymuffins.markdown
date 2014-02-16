@@ -7,21 +7,21 @@ When the [original gravity](http://en.wikipedia.org/wiki/Gravity_%28alcoholic_be
 
 [![BlueberryMuffins](http://i.imgur.com/bRXvQ5Fl.jpg "blueberry muffins")](http://i.imgur.com/bRXvQ5F.jpg)
 <p style="margin: 0px"><b>Ingredients:</b></p>
- * 3/2 cup flour (Weizenmehl Vollkorn)  
- * 1/2 cup oats (Dinkelflocken Kleinblatt)   
- * 15g baking powder (Backpulver)  
- * 1/4 teaspoon salt  
- * 1/2 cup sweetened applesauce  
- * 2 eggs  
- * 3/2 teaspoon vanilla  
- * 1/2 cup soymilk  
- * 1/3 cup honey (Eukalyptus Honig)  
- * 350g frozen blueberries
+ * `1.5 cups flour` (*Weizenmehl Vollkorn*)  
+ * `0.5 cups oats` (*Dinkelflocken Kleinblatt*)   
+ * `15g baking powder` (*Backpulver*)  
+ * `0.25 teaspoons salt`  
+ * `0.5 cups sweetened applesauce`  
+ * `2 eggs`  
+ * `1.5 teaspoons vanilla`  
+ * `0.5 cups soymilk`  
+ * <code style="padding: 5px 5px">3<sup>-1</sup> cups honey</code> (*Eukalyptus Honig*)  
+ * `350g frozen blueberries`
 
 
-**Temperature:** 190<b>&deg;</b>C
+**Temperature:** <code>190<b>&deg;</b> C</code>
 
-**Time:** ~21 minutes
+**Time:** `~21 minutes`
 
 **Music:** [Korobeiniki](http://en.wikipedia.org/wiki/Korobeiniki) (aka The Tetris Song) 
 

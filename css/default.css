@@ -64,10 +64,10 @@ img[alt=HaskellRuby] {
 
 img[alt=BlueberryMuffins] {
     float: right;
-    width: 450px;
+    width: 425px;
 }
 
-p code,pre {
+ul code, p code, pre {
     background-color: #f8f8f8;
     border: 1px solid #ddd;
     overflow: auto;
@@ -78,7 +78,7 @@ pre {
     padding: 6px 10px;
 }
 
-p code {
+ul code, p code {
     padding: 1px 5px;
 }
 
