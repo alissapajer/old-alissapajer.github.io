@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>LuneBlog</title>
+        <link>http://alissapajer.github.io</link>
+        <description><![CDATA[code etc.]]></description>
+        <atom:link href="http://alissapajer.github.io/rss.xml" rel="self"
+                   type="application/rss+xml" />
+        <lastBuildDate>Sun, 16 Feb 2014 00:00:00 UT</lastBuildDate>
+        <item>
+    <title>Blueberry Honey Muffins</title>
+    <link>http://alissapajer.github.io/posts/2014-02-16-blueberrymuffins.html</link>
+    <description><![CDATA[<div class="info">
+    Posted on February 16, 2014
+    
+        by OvenBird
+    
+</div>
+
+<p>When the <a href="http://en.wikipedia.org/wiki/Gravity_%28alcoholic_beverage%29">original gravity</a> (OG) (relative density compared to water) of <a href="http://www.sketchbrewing.com/2014/02/coffee-stout-round-2.html">yesterday’s</a> chocoloate coffee stout read only <code>1.044</code>, we dissolved all the sugar in the house into the wort, which raised the OG to a more acceptable level of <code>1.055</code>. Thus today when I decided to make blueberry muffins, I found we had no sugar. If not in Bavaria, I’d probably have gone to der Supermarkt to buy Zucker. But since every store except those in the <a href="http://en.wikipedia.org/wiki/M%C3%BCnchen_Hauptbahnhof">Hauptbahnhof</a> is closed, I opted for the more mellifluous harmony of honey and applesauce.</p>
+<a href="http://i.imgur.com/bRXvQ5F.jpg"><img src="http://i.imgur.com/bRXvQ5Fl.jpg" title="blueberry muffins" alt="BlueberryMuffins" /></a>
+<p style="margin: 0px">
+<b>Ingredients:</b>
+</p>
+ 
+<ul>
+<li><code>1.5 cups flour</code> (<em>Weizenmehl Vollkorn</em>)<br /></li>
+<li><code>0.5 cups oats</code> (<em>Dinkelflocken Kleinblatt</em>)<br /></li>
+<li><code>15g baking powder</code> (<em>Backpulver</em>)<br /></li>
+<li><code>0.25 teaspoons salt</code><br /></li>
+<li><code>0.5 cups sweetened applesauce</code><br /></li>
+<li><code>2 eggs</code><br /></li>
+<li><code>1.5 teaspoons vanilla</code><br /></li>
+<li><code>0.5 cups soymilk</code><br /></li>
+<li><code style="padding: 5px 5px">3<sup>-1</sup> cups honey</code> (<em>Eukalyptus Honig</em>)<br /></li>
+<li><code>350g frozen blueberries</code></li>
+</ul>
+<p><strong>Temperature:</strong> <code>190<b>°</b> C</code></p>
+<p><strong>Time:</strong> <code>~21 minutes</code></p>
+<p><strong>Music:</strong> <a href="http://en.wikipedia.org/wiki/Korobeiniki">Korobeiniki</a> (aka <em>The Tetris Song</em>)</p>
+<p>Their tops cracked nicely, exposing blueberries within. The blueberry-to-dough ratio is very high, almost <code>1:1</code>. They are not particularly sweet, but this is balanced out by the copious blueberries. My only beef with these muffins is that their tops turned out a touch too brown. I’ve eaten two muffins while writing this post. Yum.</p>
+]]></description>
+    <pubDate>Sun, 16 Feb 2014 00:00:00 UT</pubDate>
+    <guid>http://alissapajer.github.io/posts/2014-02-16-blueberrymuffins.html</guid>
+</item>
+<item>
+    <title>Blog Setup</title>
+    <link>http://alissapajer.github.io/posts/2014-02-08-blogsetup.html</link>
+    <description><![CDATA[<div class="info">
+    Posted on February  8, 2014
+    
+        by LuneTron
+    
+</div>
+
+<p>When I started my search for a static site generator, I first came across <a href="https://github.com/jekyll/jekyll">Jekyll</a>. I’m not particularly excited about learning Ruby, but I am excited about learning Haskell. <img src="/images/HaskellRuby.png" title="HaskellRuby" alt="HaskellRuby" /> This quickly led me to <a href="http://jaspervdj.be/hakyll/">Hakyll</a>. Hakyll is easy to install with <code>cabal</code>, though the first time I installed it I had an old version of <code>cabal</code>, and thus installed an apparently very old version of Hakyll. I remedied this as follows:</p>
+<pre><code>$ ghc-pkg unregister hakyll
+$ cabal update
+$ cabal install hakyll</code></pre>
+<p>From there I followed the <a href="http://jaspervdj.be/hakyll/tutorials.html">Tutorials</a> on the Hakyll site and found them clear and up to date. Once I built the <a href="http://jaspervdj.be/hakyll/tutorials/01-installation.html#building-the-example-site">Example Site</a> locally, it was time to move the example code to <a href="http://pages.github.com/">github pages</a>. Blogging without version control was out of the question!</p>
+<p>The most confusing part of github pages is the <a href="https://help.github.com/articles/user-organization-and-project-pages">difference</a> between User Pages and Project Pages. The difference is mostly confusing because you can have a <code>gh-pages</code> branch in the repo <code>username/username.github.io</code>. In that case github needs to make an undocumented choice about which branch to use. I decided to use User Pages, which is why you can find my blog at <code>http://alissapajer.github.io</code>. This means that content from my <code>master</code> branch will be used to build my website. Here is where things get a bit tricky.</p>
+<p><strong>Problem:</strong></p>
+<p>I need the contents of my site in the directory <code>alissapajer.github.io/</code> on the <code>master</code> branch. But Hakyll generates the website itself in <code>alissapajer.github.io/_site/</code>, and places the Haskell code, markdown, and various other files in the top level directory. And of course I need to version control everything, generated and not!</p>
+<p><strong>Solution:</strong></p>
+<p>I created a <code>source</code> branch, which contains both the manually-created and the generated files. When I make a change to my website, I always commit on the <code>source</code> branch, and I never manually edit files on <code>master</code>. The idea is that <code>source</code> will contain all of my code, and <code>master</code> will contain just the generated files. Now all we need to do is to copy the contents of the <code>_site/</code> directory to the <code>master</code> branch.</p>
+<p>To perform this copy, I use <a href="https://github.com/davisp/ghp-import">ghp-import</a> as follows, run from the <code>source</code> branch:</p>
+<pre><code>$ ghp-import _site/ -b master -m &quot;commit message&quot;</code></pre>
+<p>There is an optional flag to push to <code>master</code>, but I have been pushing manually so I can review the changes first. And that’s it! The only thing I still need to do is the redirect to a domain I own. This is done using a <code>CNAME</code> file on the <code>master</code> branch. Since my <code>master</code> branch is auto-generated I’ll need to add this <code>CNAME</code> in such a way that it’s not deleted when I commit to <code>master</code>.</p>
+<p>The only weird thing is that <code>source</code> and <code>master</code> will permanently diverge.</p>
+<p><strong>Tips:</strong></p>
+<p>While editing the webiste, I run</p>
+<pre><code>$ ./site watch</code></pre>
+<p>This command registers changes to the <code>_site/</code> directory and publishes the up-to-date website to <code>http://127.0.0.1:8000/</code>. Very useful for immediate feedback!</p>
+<p>Also, Hakyll allows you to write all your blog posts in markdown. I’ve found this <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown Cheatsheet</a> essential.</p>
+]]></description>
+    <pubDate>Sat, 08 Feb 2014 00:00:00 UT</pubDate>
+    <guid>http://alissapajer.github.io/posts/2014-02-08-blogsetup.html</guid>
+</item>
+<item>
+    <title>Site Properties</title>
+    <link>http://alissapajer.github.io/posts/2014-02-03-siteproperties.html</link>
+    <description><![CDATA[<div class="info">
+    Posted on February  3, 2014
+    
+        by LuneTron
+    
+</div>
+
+<p>This site contains all the things that don’t contain themselves.</p>
+]]></description>
+    <pubDate>Mon, 03 Feb 2014 00:00:00 UT</pubDate>
+    <guid>http://alissapajer.github.io/posts/2014-02-03-siteproperties.html</guid>
+</item>
+
+    </channel> 
+</rss>
