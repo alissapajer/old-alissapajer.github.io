@@ -76,6 +76,11 @@ img[alt=BlueberryMuffins] {
     width: 425px;
 }
 
+img[alt=diagram] {
+    float: right;
+    width: 400px;
+}
+
 ul code, p code, pre {
     background-color: #f8f8f8;
     border: 1px solid #ddd;
