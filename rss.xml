@@ -6,8 +6,27 @@
         <description><![CDATA[code etc.]]></description>
         <atom:link href="http://alissapajer.github.io/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Sun, 16 Feb 2014 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Wed, 19 Feb 2014 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Category Theory at Strange Loop 2013</title>
+    <link>http://alissapajer.github.io/posts/2014-02-19-categorytheorystrangeloop.html</link>
+    <description><![CDATA[<div class="info">
+    Posted on February 19, 2014
+    
+        by LuneTron
+    
+</div>
+
+<p><img src="/images/diagram.png" title="diagram" alt="diagram" /> Back in September 2013 I gave a talk titled “Category Theory: An Abstraction for Anything” at the <a href="https://thestrangeloop.com/">Strange Loop Conference</a>. A few days ago, the <a href="http://www.infoq.com/presentations/category-theory">video</a> for my talk was released.</p>
+<p>Additionally, I wrote a <a href="http://engineering.richrelevance.com/closing-the-loop-on-category-theory-polymorphism-currying-and-more/">blog post</a> about this talk that was published on my employer’s blog.</p>
+<p>Here’s the talk abstract, reproduced from the <a href="https://thestrangeloop.com/sessions/category-theory-an-abstraction-for-anything">Strange Loop website</a>:</p>
+<p><em>Category theory provides a mathematically sound foundation on which we can create collections of objects and express morphisms between them. Together, along with a few simple rules, a collection of objects and morphisms forms a category to which we can apply many useful results, such as the uniqueness of an identity morphism. Furthermore, once we have a category in hand, we can formally explore the relationships it has with other categories, deducing powerful and practical abstractions.</em></p>
+<p><em>The power of category theory lies in the relative simplicity and accessibility of its definitions. From just a handful of straightforward concepts, we can formalize many concrete ideas such as directed acyclic graphs, currying, polymorphic functions, and Haskell itself. This talk will introduce the basics of category theory, while simultaneously diving into specific programming-related examples of categories, functors, and natural transformations. In addition to exploring profound and beautiful concepts, this talk aims to provide you with the tools necessary to recognize category-theoretical patterns in your own programming projects.</em></p>
+]]></description>
+    <pubDate>Wed, 19 Feb 2014 00:00:00 UT</pubDate>
+    <guid>http://alissapajer.github.io/posts/2014-02-19-categorytheorystrangeloop.html</guid>
+</item>
+<item>
     <title>Blueberry Honey Muffins</title>
     <link>http://alissapajer.github.io/posts/2014-02-16-blueberrymuffins.html</link>
     <description><![CDATA[<div class="info">
