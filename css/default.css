@@ -81,6 +81,11 @@ img[alt=diagram] {
     width: 400px;
 }
 
+img[alt=ChurchRosserRight] {
+    float: right;
+    padding: 10px 10px;
+}
+
 ul code, p code, li code, pre {
     background-color: #f8f8f8;
     border: 1px solid #ddd;

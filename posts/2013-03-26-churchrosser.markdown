@@ -42,8 +42,11 @@ To understand what this assumption should be, consider the famous `Ω`-combinato
 ```
 Furthermore consider the lambda term `(λx.z)Ω`. If we evaluate this term using a call-by-name strategy, then it's simply equal to the constant `z`, since `λx.z` is a constant function. But if we use a call-by-value strategy, then we'll never be able to further reduce it, since when we apply `λx.xx` to itself we again obtain `Ω`. So what we really want to prove is this: If we β-reduce a lambda term until we cannot reduce it any further, then that final reduced term is unique. Said more formally: If a lambda term has a normal form, then that normal form is unique.
 
-Introduction to Church-Rosser
-In summary, we cannot just pick an evaluation strategy and expect it to yield the same results as all other evaluation strategies, because, as the `Ω`-combinator example showed us, a given evaluation strategy may never terminate. But, there is something we can prove for certain: a lambda term has at most one normal form. In order to prove this, we'll outline the proof of a more general theorem, known as the Church-Rosser Theorem. In picture form, it looks like this, where solid arrows are assumptions and dotted arrows are to be proven.
+**Introduction to Church-Rosser:**
+
+![ChurchRosserRight](/images/ChurchRosser1.png "ChurchRosser1")
+In summary, we cannot just pick an evaluation strategy and expect it to yield the same results as all other evaluation strategies, because, as the `Ω`-combinator example showed us, a given evaluation strategy may never terminate. But, there is something we can prove for certain: a lambda term has at most one normal form. In order to prove this, we'll outline the proof of a more general theorem, known as the Church-Rosser Theorem. In picture form, it looks like the image to the right, where solid arrows are assumptions and dotted arrows are to be proven.
+
 
 In word form it states: If a term `M` β-reduces to two terms `N1` and `N2`, then there exists some `N3` such that `N1` and `N2` each β-reduce to it.
 
@@ -66,14 +69,16 @@ Now to understand these definitions, if `K` is a lambda term that equals either 
 
 **Strip Lemma Basics:**
 
-Now in order to prove Church-Rosser, we'll prove a lemma first, namely the Strip Lemma. This lemma states that, if `M` β-reduces to `N1` in a single step, and `M` β-reduces to `N2` in any finite number of steps, there exists an `N3` such that `N1` and `N2` each β-reduce to it. In diagram form, we have the following, where a single arrow represents a single β-reduction, and a double arrow represent any finite number of β-reductions. 
+![ChurchRosserRight](/images/ChurchRosser2.png "ChurchRosser2")
+Now in order to prove Church-Rosser, we'll prove a lemma first, namely the Strip Lemma. This lemma states that, if `M` β-reduces to `N1` in a single step, and `M` β-reduces to `N2` in any finite number of steps, there exists an `N3` such that `N1` and `N2` each β-reduce to it. In diagram form, we have the diagram to the right, where a single arrow represents a single β-reduction, and a double arrow represents any finite number of β-reductions. 
 
 Note that once we've proven the Strip Lemma, Church-Rosser follows immediately by induction on the natural numbers. (First prove the statement for `n=1`. Then prove that if the statement holds for an arbitrary `n`, it holds for `n+1`.) To see this visually, imagine filling in the Church-Rosser diagram with these strips. 
 
 Proceeding with the proof of the Strip Lemma, the correct question to ask is, how do we obtain a candidate `N3`? Well, we know that `M` β-reduces to `N1` in a single step, so we'll consider this redex and mark it in `M`. Now as we perform the multiple reductions on `M` that ultimately reduce to `N2`, we track this marked lambda term until we reach `N2`. We now perform the β-reduction on this marked term in `N2`, and that produces our candidate `N3`.
 
-Let's make this idea of marking more formal with some notation. Specifically, to keep track of a certain redex, we'll underline it like this: <code>(<ins>λ</ins>x.M)N</code>, and we'll keep that lambda underlined until we β-reduce it. With this new notation, here’s an example of the Strip Lemma with actual lambda terms. (We’ll introduce `φ` in a couple paragraphs; for now just think of it as a β-reduction.)
+Let's make this idea of marking more formal with some notation. Specifically, to keep track of a certain redex, we'll underline it like this: <code>(<ins>λ</ins>x.M)N</code>, and we'll keep that lambda underlined until we β-reduce it. With this new notation, here’s an example of the Strip Lemma with actual lambda terms. (We’ll introduce `φ` in a couple of paragraphs; for now just think of it as a β-reduction.)
 
+![](/images/ChurchRosser3.png "ChurchRosser3")
 
 **Details of the Proof:**
 
@@ -87,6 +92,8 @@ Given that we now allow underlined lambdas in our set of allowed terms, what doe
 
 Consider the following diagram. Note that the front rectangle is the same as the diagram in the statement of the Strip Lemma. The other terms, namely `M'` and `N2'`, we construct for purposes of the proof.
 
+![](/images/ChurchRosser4.png "ChurchRosser4")
+
 We construct `M'` to be equivalent to `M`, except that in it we underlined the `λ` that was reduced to obtain `N1`. The function <code>ψ: <ins>𝚲</ins> -> 𝚲</code> simply erases all underlines, so that
 
 <pre><code>ψ((<ins>λ</ins>x.M)N) = (λx.ψ(M))ψ(N)</code></pre>
@@ -95,7 +102,9 @@ We can now apply beta-reductions to `M'`, analogous to those applied to `M`, in 
 
 <pre><code>φ((<ins>λ</ins>x.M)N) = φ(M)[x := φ(N)]</code></pre>
 
-Now that we have our candidate `N3`, we only need to prove that we can draw solid lines in place of the dotted ones. I will outline a proof showing that `N2` β-reduces to `N3` and will leave the other part of the proof as an exercise for the reader. In diagram form, we will outline a proof of the following (the front triangle in the above diagram):
+Now that we have our candidate `N3`, we only need to prove that we can draw solid lines in place of the dotted ones. I will outline a proof showing that `N2` β-reduces to `N3` and will leave the other part of the proof as an exercise for the reader. We will outline a proof of the following diagram, which is the front triangle in the previous diagram.
+
+![](/images/ChurchRosser5.png "ChurchRosser5")
 
 In order to prove this, we will use the method of structural induction. Recall that initially we constructed `𝚲` inductively. Thus in order to prove something general about all elements of `𝚲`, we can use an induction technique that mimics the way in which we define `𝚲`. This is called induction on the structure of `𝚲`. Though note that in our case, <code>A ∈ <ins>𝚲</ins></code>, so we'll use induction on the structure of <code><ins>𝚲</ins></code>.
 
