@@ -35,7 +35,7 @@ My key realization was that I could remove the parentheses around `(Bool -> Char
 Once I wrote this last implementation, it was immediately clear that I had just written a non-parametric version of `myFlip`. There is nothing special about the types I had chosen; they could just as easily be type variables. And so we arrive at our solution:
 ```
 myFlip :: (a -> b -> c) -> b -> a -> c
-myFlip f b a = f a b
+myFlip f y x = f x y
 ```
 To implement `myFlip`, we needed to determine how the function would handle itself when fully applied. But our goal in writing `myFlip` is to return another (partially applied) function with type `b -> a -> c`. The key to the implementation of `flip` that wasn't obvious at first is that we need to provide a full implementation in order to later partially apply it.
 
