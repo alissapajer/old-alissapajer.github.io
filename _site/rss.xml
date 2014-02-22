@@ -6,8 +6,60 @@
         <description><![CDATA[code etc.]]></description>
         <atom:link href="http://alissapajer.github.io/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Wed, 19 Feb 2014 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Sat, 22 Feb 2014 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Haskell Flip</title>
+    <link>http://alissapajer.github.io/posts/2014-02-22-haskellflip.html</link>
+    <description><![CDATA[<div class="info">
+    Posted on February 22, 2014
+    
+        by LuneTron
+    
+</div>
+
+<p>How can we change the order of the arguments to a function? After I answered this question, I realized it’s actually a very odd question to ask.</p>
+<p>I’m working my way though <a href="http://learnyouahaskell.com/">Learn You a Haskell for Great Good</a>, and in the <a href="http://learnyouahaskell.com/higher-order-functions#curried-functions">Curried Functions</a> section, the author describes the Haskell function <code>flip</code> like so: <em>“Flip simply takes a function and returns a function that is like our original function, only the first two arguments are flipped.”</em> Without scrolling down further, I decided to implement <code>flip</code> based on this sentence alone.</p>
+<p>I started with the type signature</p>
+<pre><code>myFlip :: (a -&gt; b -&gt; c) -&gt; (b -&gt; a -&gt; c)</code></pre>
+<p>and my first attempt at implementation trailed off rather quickly:</p>
+<pre><code>myFlip f = ...</code></pre>
+<p>Given only a function <code>f :: a -&gt; b -&gt; c</code>, and nothing to apply to it, I had reached a dead end, so I decided to implement <code>f</code>, and then <code>flip</code> this implementation. I wanted the type variables <code>a</code>, <code>b</code>, and <code>c</code> to be distinct so I could easily keep track of them. Here’s my function:</p>
+<pre><code>myImpl :: Char -&gt; Bool -&gt; String
+myImpl char bool = char : (show bool)</code></pre>
+<p>And now to flip it!</p>
+<pre><code>flippedMyImpl :: Bool -&gt; Char -&gt; String
+flippedMyImpl bool char = myImpl char bool</code></pre>
+<p>Well, that is simple enough. The types lead way! And suddenly I realized that I just might have access to type variables <code>a</code> and <code>b</code>. But I needed to implement the full signature of <code>myFlip</code> using these specific types to fully understand. I combined <code>myImpl</code> and <code>flippedMyImpl</code> to produce</p>
+<pre><code>flipWithTypes :: (Char -&gt; Bool -&gt; String) -&gt; Bool -&gt; Char -&gt; String
+flipWithTypes f bool char = f char bool</code></pre>
+<p>My key realization was that I could remove the parentheses around <code>(Bool -&gt; Char -&gt; String)</code> without changing the type signature. Once I did this, I realized that I had access to two more function arguments! Before removing the parentheses, my mind had written off <code>(b -&gt; a -&gt; c)</code> as an impenetrable block.</p>
+<p>Once I wrote this last implementation, it was immediately clear that I had just written a non-parametric version of <code>myFlip</code>. There is nothing special about the types I had chosen; they could just as easily be type variables. And so we arrive at our solution:</p>
+<pre><code>myFlip :: (a -&gt; b -&gt; c) -&gt; b -&gt; a -&gt; c
+myFlip f b a = f a b</code></pre>
+<p>To implement <code>myFlip</code>, we needed to determine how the function would handle itself when fully applied. But our goal in writing <code>myFlip</code> is to return another (partially applied) function with type <code>b -&gt; a -&gt; c</code>. The key to the implementation of <code>flip</code> that wasn’t obvious at first is that we need to provide a full implementation in order to later partially apply it.</p>
+<p>In doing this exercise, my conception of a function changed. Now when I think of a function, I think of something linear, something in which each parameter must be applied in its prescribed order. And if that order is to be broken, another function must be applied to faciliate this change in order.</p>
+<p>Really, <code>flip</code> is a formalization of how we handle the permutations of function application orders in Haskell. In math, we’ve seen that given a function <code>f(x,y,z)</code>, we can consider <code>g(y,z) = f(3,y,z)</code> or <code>h(y) = f(5,y,6)</code> without any concern, because the order in which we provide values for our variables doesn’t matter.</p>
+<p>But since in Haskell all functions take exactly one parameter, and thus multi-parameter functions are a semantic illusion, one must make explicit how to pass in parameters in a different order. Hence we arrive at the <code>flip</code> function.</p>
+<p>To tie up this post, it’s odd, from a non-functional point of view, to ask how we can flip the order of function arguments because the question assumes that function arguments have an order in the first place! Though, once you recall the definitions of lambda calculus and think about different reduction rules, the fact that functions innately order their parameters seems almost intuitive. And then I realized: <a href="http://en.wikipedia.org/wiki/Church%E2%80%93Rosser_theorem">Church-Rosser</a>. And guess what? I’ve already written a blog post about that.</p>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'alissapajer'; // required: replace example with your forum shortname
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+]]></description>
+    <pubDate>Sat, 22 Feb 2014 00:00:00 UT</pubDate>
+    <guid>http://alissapajer.github.io/posts/2014-02-22-haskellflip.html</guid>
+</item>
+<item>
     <title>Category Theory at Strange Loop 2013</title>
     <link>http://alissapajer.github.io/posts/2014-02-19-categorytheorystrangeloop.html</link>
     <description><![CDATA[<div class="info">
