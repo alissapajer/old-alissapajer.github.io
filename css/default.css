@@ -81,7 +81,7 @@ img[alt=diagram] {
     width: 400px;
 }
 
-ul code, p code, pre {
+ul code, p code, li code, pre {
     background-color: #f8f8f8;
     border: 1px solid #ddd;
     overflow: auto;
@@ -92,7 +92,7 @@ pre {
     padding: 6px 10px;
 }
 
-ul code, p code {
+ul code, p code, li code {
     padding: 1px 5px;
 }
 
