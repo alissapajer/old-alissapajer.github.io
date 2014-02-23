@@ -6,8 +6,58 @@
         <description><![CDATA[code etc.]]></description>
         <atom:link href="http://alissapajer.github.io/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Sat, 22 Feb 2014 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Sun, 23 Feb 2014 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Raspberry Pecan Muffins</title>
+    <link>http://alissapajer.github.io/posts/2014-02-23-raspberrymuffins.html</link>
+    <description><![CDATA[<div class="info">
+    Posted on February 23, 2014
+    
+        by OvenBird
+    
+</div>
+
+<p>More muffins!</p>
+<a href="http://i.imgur.com/OQgsqGv.jpg"><img src="http://i.imgur.com/OQgsqGvl.jpg" title="raspberry muffins" alt="BlueberryMuffins" /></a>
+<p style="margin: 0px">
+<b>Ingredients:</b>
+</p>
+ 
+<ul>
+<li><code>1.5 cups flour</code> (<em>Weizenmehl Vollkorn</em>)<br /></li>
+<li><code>0.5 cups oats</code> (<em>Dinkelflocken Kleinblatt</em>)<br /></li>
+<li><code>15g baking powder</code> (<em>Backpulver</em>)<br /></li>
+<li><code>0.25 teaspoons salt</code><br /></li>
+<li><code>0.25 cups sweetened applesauce</code><br /></li>
+<li><code>1 egg</code><br /></li>
+<li><code>0.875 cups soymilk</code><br /></li>
+<li><code style="padding: 5px 5px">3<sup>-1</sup> cups sugar</code></li>
+<li><code>0.5 cups crushed pecans</code></li>
+<li><code>300g frozen raspberries</code></li>
+</ul>
+<p><strong>Temperature:</strong> <code>190<b>°</b> C</code></p>
+<p><strong>Bake Time:</strong> <code>~24 minutes</code></p>
+<p>While mixing the dough, I thought I had added too many raspberries, but after eating a baked muffin, I concluded that the amout of raspberries is perfect. The dough itself is a dense, due to the oats and the pecans. And the raspberries are very juicy.</p>
+<p>The image in this post was uploaded to imgur.com and served from there. For reference, the <a href="http://api.imgur.com/models/image">imgur image api</a> provides a list of image thumbnail suffixes. I used the <code>l</code> suffix for a <code>640 x 640</code> image size.</p>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'alissapajer'; // required: replace example with your forum shortname
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+]]></description>
+    <pubDate>Sun, 23 Feb 2014 00:00:00 UT</pubDate>
+    <guid>http://alissapajer.github.io/posts/2014-02-23-raspberrymuffins.html</guid>
+</item>
+<item>
     <title>Haskell Flip</title>
     <link>http://alissapajer.github.io/posts/2014-02-22-haskellflip.html</link>
     <description><![CDATA[<div class="info">
@@ -121,7 +171,7 @@ myFlip f y x = f x y</code></pre>
 <li><code>350g frozen blueberries</code></li>
 </ul>
 <p><strong>Temperature:</strong> <code>190<b>°</b> C</code></p>
-<p><strong>Time:</strong> <code>~21 minutes</code></p>
+<p><strong>Bake Time:</strong> <code>~21 minutes</code></p>
 <p><strong>Music:</strong> <a href="http://en.wikipedia.org/wiki/Korobeiniki">Korobeiniki</a> (aka <em>The Tetris Song</em>)</p>
 <p>Their tops cracked nicely, exposing blueberries within. The blueberry-to-dough ratio is very high, almost <code>1:1</code>, and although the dough is not particularly sweet, the copious blueberries are. My only beef with these muffins is that their tops turned out a touch too brown. I’ve eaten two muffins while writing this post. Yum.</p>
 

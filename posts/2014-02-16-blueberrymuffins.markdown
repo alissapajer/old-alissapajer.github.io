@@ -21,7 +21,7 @@ When the [original gravity](http://en.wikipedia.org/wiki/Gravity_%28alcoholic_be
 
 **Temperature:** <code>190<b>&deg;</b> C</code>
 
-**Time:** `~21 minutes`
+**Bake Time:** `~21 minutes`
 
 **Music:** [Korobeiniki](http://en.wikipedia.org/wiki/Korobeiniki) (aka *The Tetris Song*) 
 
