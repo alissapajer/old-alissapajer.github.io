@@ -6,8 +6,77 @@
         <description><![CDATA[code etc.]]></description>
         <atom:link href="http://alissapajer.github.io/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Sun, 23 Feb 2014 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Sat, 08 Mar 2014 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Haskell $</title>
+    <link>http://alissapajer.github.io/posts/2014-03-08-haskelldollarsign.html</link>
+    <description><![CDATA[<div class="info">
+    Posted on March  8, 2014
+    
+        by LuneTron
+    
+</div>
+
+<p>What is precedence? I learned about precedence when I was a kid learning arithmetic. Multiplication takes precedence over addition. And exponentiation takes precedence over multiplication. And precedence is transitive.</p>
+<p>I think Haskell is broken because common terms like addition and multiplication break Haskell’s normal precedence rules. The <code>(*)</code> function and the <code>(+)</code> function are only intuitive because of the good old order of operations that we all learned in school.</p>
+<p>Really, why does order of operations even exist? Is it logical in any way? It saves us from writing lots of parentheses, and ultimately from making mistakes by miscounting opening and closing parens. And it makes the functions more human readable. But is there any inherent about multiplication that makes it take precedence over addition? In other words, could <code>3 + 4 * 5</code> implicitly equal <code>(3 + 4) * 5</code> instead?</p>
+<p><code>4 * 5</code> is defined to be <code>5 + 5 + 5 + 5</code>. And</p>
+<p>With each passing day, if something as basic as precedence isn’t encoded in the types, or if it’s not consistent across all functions, then something is broken.</p>
+<p>The space has the highest precedence in Haskell, meaning that</p>
+<p>how does all this precedence relate back to single parameter functions and lambda calculus? Well, application is left associative, and and abstraction is right associative.</p>
+<p>I want all type signatures to carry with them a notion of precedence and fixity.</p>
+<p>So really :t does not provide sufficient information. we need :i to tell us more information. Because even if two implementations are “equivalent” functionally, they act differently when applied multiple times in a row. So as single functions applied just to two arguments in a vacuum, they are equivalent (see (++) and my wrapped version), but once we do <code>a ++ b ++ c</code> we have to deal with associativity. And when we add other operators in there like <code>a ++ b :: c</code> we have to also deal with precedence! Folks, we do not just have types to deal with. And the problem is, the compiler will not tell you if you assumed one association or one precedence, and you actually have another! This seems like a giant hole for bugs to me.</p>
+<p>To please those Haskell could have two operators, <code>*</code> and <code>special*</code> where <code>special*</code> is multiplication with the built in precedence.</p>
+<p>What’s changed: fixity/precedence and type are both attributes of a function, and fixity is just as important as type. But fixity seems a lot less sound than types do. Because if I try to apply a function to arguments of the wrong type, the compiler will tell me. but if my function has the wrong fixity, and I omit parens accidentally, then the compiler will not tell me!</p>
+<p>just by wrapping up a built in infix function in another name, I’m invisibly changing its fixity, which changes the meaning of expressions.</p>
+<pre><code>myConcat :: [a] -&gt; [a] -&gt; [a]
+myConcat = (++)</code></pre>
+<p>Why did I never think about this in Scala? In Scala there were no homemade infix operators</p>
+<p>This seems like cheating, making in infix operator this way:</p>
+<pre><code>scala&gt; class Minus(left: Int) { def &gt;&gt;:(right: Int): Int = left - right }</code></pre>
+<p>We’re just using the fact that we can do <code>new Minus(5).&gt;&gt;:(3)</code> which is just how you access a method in a class.</p>
+<pre><code>scala&gt; class Minus1(left: Int) { def minus(right: Int): Int = left - right }
+defined class Minus1
+
+scala&gt; class Minus2(left: Int) { def &gt;&gt;:(right: Int): Int = left - right }
+defined class Minus2
+
+scala&gt; object Implicits { implicit def tominus(i: Int) = new Minus1(i); implicit def tominus2(i: Int) = new Minus2(i) }
+warning: there were 2 feature warning(s); re-run with -feature for details
+defined module Implicits
+
+scala&gt; 8 &gt;&gt;: 3 &gt;&gt;: 7
+res42: Int = -4
+
+scala&gt; 8 minus 3 minus 7
+res43: Int = -2
+
+scala&gt; 7 minus 3 minus 8
+res44: Int = -4
+
+scala&gt; 7 &gt;&gt;: 3 &gt;&gt;: 8
+res45: Int = -2</code></pre>
+<p>So, subtraction. It never occurred to me to that subtraction is a left-associative operator. I knew that by convention <code>2 - 3 - 4</code> means that you subtract 3 from 2, and then subtract 4 from that result. But actually thinking of it in terms of associativity, now that’s really cool. Though, why is Haskell <code>(+)</code> also left-associative? (See http://www.haskell.org/onlinereport/decls.html and http://www.haskell.org/tutorial/functions.html) Numeric addition can be performed in any order, the the <code>(+)</code> function is defined on the type class <code>Num</code>, so why? Same question goes for <code>(*)</code>. Shouldn’t that not have a left-right association?</p>
+<p>&amp;&amp; and || being right associative is clever, because then they can be smart and opt out early, after just looking at the first element.</p>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'alissapajer'; // required: replace example with your forum shortname
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+]]></description>
+    <pubDate>Sat, 08 Mar 2014 00:00:00 UT</pubDate>
+    <guid>http://alissapajer.github.io/posts/2014-03-08-haskelldollarsign.html</guid>
+</item>
+<item>
     <title>Raspberry Pecan Muffins</title>
     <link>http://alissapajer.github.io/posts/2014-02-23-raspberrymuffins.html</link>
     <description><![CDATA[<div class="info">
