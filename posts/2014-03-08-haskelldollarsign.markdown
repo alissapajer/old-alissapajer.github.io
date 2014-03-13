@@ -3,6 +3,72 @@ title: Haskell $
 author: LuneTron
 ---
 
+Let's consider some Haskell. Here's a function:
+
+```
+zipMap :: (Num a) => [a] -> [a] -> [a]
+zipMap xs ys = map summed zipped
+  where zipped = xs `zip` ys
+        summed = \(a, b) -> a + b
+```
+This function will zip the two provided lists and then sum the pairs of elements, returning a single list of `Num`. For example 
+
+```
+*Main> zipMap [1,2,3,4] [3,4]
+[4,6]
+```
+
+Great, so what happens if we apply `zipMap` as an infix function, and also apply a list concatenation.
+```
+*Main> [4,5,6] ++ [1,2,3,4] `zipMap` [10,11]
+[4,5,6,11,13]
+```
+
+Interesting, so it looks like `zipMap` takes precedence over `(++)`, when we've applied them both as infix operators. Example noted. Now let's write our own list concat function called `myConcat`:
+
+```
+myConcat :: [a] -> [a] -> [a]
+myConcat = (++)
+```
+
+We can perform what looks like the same function applications as we just did:
+```
+*Main> [4,5,6] `myConcat` [1,2,3,4] `zipMap` [10,11]
+[14,16]
+```
+
+Ummm, so what just happened? That is not the same result we computed last time. This time the list concatenation took precedence. Thus, and this is surprising, `(++)` and `myConcat` are not acting equivalently in this situation.
+
+Now, let's take a step back into Mathland and think about what it means for two functions to be equal. Two functions `f` and `g` are defined to be equal if they have the same domain, and for each element `x` in their domain, `f(x) = g(x)`. Now, consider our two functions `(++)` and `myConcat`. These functions have identical signatures, and hence the same domain. And since `myConcat` is effectively just a wrapping around `(++)`, then yes, we can say that for any lists `l1` and `l2` of the same type, 
+```
+l1 ++ l2 == l1 `myConcat` l2
+```
+Thus, by this definition of function equality, `myConcat` and `(++)` are equal functions. But we have just seen that, when applied as infix operators in conjunction with `zipMap`, they do not operate in the same way! It seems our definition of a function isn't correct. Or that we're actually not dealing with functions. Neither of those options are particularly appealing.
+
+I think the problem we're dealing with here is really a problem with infix operators, and not traditional function application. When we use infix operators in sequence, we are writing an ambiguous statement. In order to evaluate it at all, we need to make some sort of evaluation assumption. For example we could assume that all infix operators have the same precedence, and then they are all left associative. But even if we remove the ambiguity by defining an arbitrary evaluation rule, it's still arbitrary! And function application shouldn't depend on an arbitrary rule, even if we apply it consistently.
+
+
+Let's find out.
+```
+*Main> zipMap (myConcat [4,5,6] [1,2,3,4]) [10,11]
+[14,16]
+*Main> myConcat [4,5,6] $ zipMap [1,2,3,4] [10,11]
+[4,5,6,11,13]
+```
+
+The type signatures of prefix operators prohibit us from writing ambiguous statements. In rea
+
+
+
+
+Solution: no more infix operators! Infix operators sacrifice purity for easy of reading and writing.
+
+
+
+
+
+
+
 What is precedence? I learned about precedence when I was a kid learning arithmetic. Multiplication takes precedence over addition. And exponentiation takes precedence over multiplication. And precedence is transitive. 
 
 I think Haskell is broken because common terms like addition and multiplication break Haskell's normal precedence rules. The `(*)` function and the `(+)` function are only intuitive because of the good old order of operations that we all learned in school.
