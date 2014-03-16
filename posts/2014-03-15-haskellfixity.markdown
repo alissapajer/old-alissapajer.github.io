@@ -7,8 +7,7 @@ Let's consider some Haskell. Here's a function:
 
 ```
 zipSum :: (Num a) => [a] -> [a] -> [a]
-zipSum xs ys = map summed (zip xs ys)
-  where summed = \(a, b) -> a + b
+zipSum = zipWith (+)
 ```
 This function will zip the two provided lists and then sum the pairs of elements, returning a single list of `Num`. For example: 
 
@@ -79,3 +78,11 @@ always generates a parser error? Well, that would be a world full of parentheses
 Let's again consider the case of numeric addition and multiplication. These operations have a universally accepted precedence, which is entirely sensical when you think of `5 * 3` as `5 + 5 + 5`. So can't we at least maintain this precedence for these numeric operations? I say, nah. The Haskell functions `(+)` and `(*)` really should know nothing of their semantics. There is no reason `(*)` should take precendece over `(+)`, unless you consider the meaning of its implementaion in the larger context of math.
 
 So, lesson learned: equal functions can be defined with non-equal infix operators. (Recall the example of `zipSum` used with both `(++)` and `myConcat`.) There is of course an obvious solution to this problem: never use Haskell infix operators. What do we lose? Readability. What do we gain? Correctness. And in all reality, a series of three or more infix applications really should be broken into shorter expressions anyway.
+
+**Update:** The original version of `zipSum` looked like this:
+```
+zipSum :: (Num a) => [a] -> [a] -> [a]
+zipSum xs ys = map summed (zip xs ys)
+  where summed = \(a, b) -> a + b
+```
+Thanks to [\@puffnfresh](https://twitter.com/puffnfresh) for pointing out that we can use `zipWith` to implement this function.

@@ -19,8 +19,7 @@
 
 <p>Let’s consider some Haskell. Here’s a function:</p>
 <pre><code>zipSum :: (Num a) =&gt; [a] -&gt; [a] -&gt; [a]
-zipSum xs ys = map summed (zip xs ys)
-  where summed = \(a, b) -&gt; a + b</code></pre>
+zipSum = zipWith (+)</code></pre>
 <p>This function will zip the two provided lists and then sum the pairs of elements, returning a single list of <code>Num</code>. For example:</p>
 <pre><code>*Main&gt; zipSum [1,2,3,4] [3,4]
 [4,6]</code></pre>
@@ -56,6 +55,11 @@ infixr 5 ++</code></pre>
 <p>always generates a parser error? Well, that would be a world full of parentheses! The user would be required to add parentheses around their infix operators always, and without exception, until all ambiguity is resolved.</p>
 <p>Let’s again consider the case of numeric addition and multiplication. These operations have a universally accepted precedence, which is entirely sensical when you think of <code>5 * 3</code> as <code>5 + 5 + 5</code>. So can’t we at least maintain this precedence for these numeric operations? I say, nah. The Haskell functions <code>(+)</code> and <code>(*)</code> really should know nothing of their semantics. There is no reason <code>(*)</code> should take precendece over <code>(+)</code>, unless you consider the meaning of its implementaion in the larger context of math.</p>
 <p>So, lesson learned: equal functions can be defined with non-equal infix operators. (Recall the example of <code>zipSum</code> used with both <code>(++)</code> and <code>myConcat</code>.) There is of course an obvious solution to this problem: never use Haskell infix operators. What do we lose? Readability. What do we gain? Correctness. And in all reality, a series of three or more infix applications really should be broken into shorter expressions anyway.</p>
+<p><strong>Update:</strong> The original version of <code>zipSum</code> looked like this:</p>
+<pre><code>zipSum :: (Num a) =&gt; [a] -&gt; [a] -&gt; [a]
+zipSum xs ys = map summed (zip xs ys)
+  where summed = \(a, b) -&gt; a + b</code></pre>
+<p>Thanks to <a href="https://twitter.com/puffnfresh">@puffnfresh</a> for pointing out that we can use <code>zipWith</code> to implement this function.</p>
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">
