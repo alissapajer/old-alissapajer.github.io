@@ -6,8 +6,38 @@
         <description><![CDATA[code etc.]]></description>
         <atom:link href="http://alissapajer.github.io/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Sat, 15 Mar 2014 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Thu, 19 Jun 2014 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Notions of Variance in Scala</title>
+    <link>http://alissapajer.github.io/posts/2014-06-19-scalavariance.html</link>
+    <description><![CDATA[<div class="info">
+    Posted on June 19, 2014
+    
+        by LuneTron
+    
+</div>
+
+<p>Here is a <a href="https://gist.github.com/alissapajer/50c912d739346c1f00dd">github gist</a> with some exercises explaining variance of functors in Scala. Additionally, it explains variance of types over their type parameters.</p>
+<p>I also wrote up a <a href="/images/FunctorMorphismPreservationProof.pdf">proof</a> that a given functor implementation preserves morphism composition.</p>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'alissapajer'; // required: replace example with your forum shortname
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+]]></description>
+    <pubDate>Thu, 19 Jun 2014 00:00:00 UT</pubDate>
+    <guid>http://alissapajer.github.io/posts/2014-06-19-scalavariance.html</guid>
+</item>
+<item>
     <title>Haskell Fixity</title>
     <link>http://alissapajer.github.io/posts/2014-03-15-haskellfixity.html</link>
     <description><![CDATA[<div class="info">
