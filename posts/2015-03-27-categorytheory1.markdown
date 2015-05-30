@@ -1,7 +1,9 @@
 ---
-title: Category Theory: Categories
+title: Category Theory in Code: What is a Category
 author: LuneTron
 ---
+
+# Introduction
 
 Category theory was developed as a generalization of mathematics itself, and so it is only natural
 that its literature is full of mathematically abstract language and concepts. For this reason, the
@@ -23,7 +25,9 @@ Many programming langauges have characteristics that can be described using cate
 some of these languages lend themselves quite naturally to such descriptions. Two such languages are
 Haskell and Scala. They serve as a good examples due to the prominence therein of types and
 functions. Furthermore, it is useful to see side-by-side examples in two languages so one can begin
-to look past the syntax and understand the underlying concepts.
+to look past the syntax to the underlying concepts.
+
+# Typed Functions
 
 Let us now begin. We've decided that we want to write a function named `foo`. In Python, one could
 write that function as follows:
@@ -58,6 +62,8 @@ argument of `foo` requires one of two values (true or false), we say it requires
 instead of saying the return type of `foo` could be 0 or 1 or -1 or ... we say the return type is an
 integer.
 
+# More about Types
+
 Now the types we have at our disposal are not just the types built in to the language. In Scala and
 Haskell is is possible to create your own types.
 
@@ -78,6 +84,8 @@ And the equivalent Haskell example:
 lalala
 ```
 
+# More about Functions
+
 Now consider all the Haskell (or Scala) types. This includes all the built-in types, as well as any
 type you could create yourself. Then for each pair of types `A` and `B`, consider all the functions
 from type `A` to type `B`. In Scala we have
@@ -90,6 +98,8 @@ And in Haskell:
 ```
 lalala - think about forall
 ```
+
+# Categories Hask and Scal
 
 It's now time to introduce some category theory terminology. A category consists of "objects",
 "morphisms", and "morphism composition". In the case of a programming langauge, the objects in the
@@ -113,4 +123,33 @@ category. Sometimes it is useful to call a category be a name. The category of H
 named **Hask**. The category of Scala types doesn't have a popular name that I know of, so I'm going
 to call it **Scal**.
 
+# Laws
 
+So there we have it! Now, to ensure we've defined something sane, there three rules that the objects
+(types) and morphisms (functions) must satisfy in order to be a real category. Rules such as these
+are the minimal set of rules that produce a sensical construction. Here go the rules:
+
+(1) Imagine `f(g(h(x)))` .... This rule is know as the "associativity of function composition".
+
+(2) What if `f compose g` weren't a function? It's hard to imagine what that would even mean. 
+
+(3) What can we compose `f` with to produce exactly `f`?
+
+# A Proof for Fun
+
+Lastly, we're going to write a proof. Consider the identity function rules from (3). How many
+ways can you implement an identity funciton that satisfies those rules? An obvious implementation in
+Scala is:
+```
+def identity[T](a: T): T = a
+def foo[A, B](a: A): B
+
+val x: X
+foo[X, Y](identity[X](x)) == identity[Y](foo[X, Y](x))
+```
+and in Haskell:
+```
+lalala
+```
+
+The 

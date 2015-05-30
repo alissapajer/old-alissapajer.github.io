@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>LuneyBlog - Category Theory in Code: What is a Category</title>
+        <link rel="stylesheet" type="text/css" href="../css/default.css" />
+        <link rel="icon" type="image/png" href="../images/bird.png" />
+    </head>
+    <body>
+        <div id="header">
+            <div id="logo">
+                <a href="../">LuneyBlog</a>
+            </div>
+            <div id="navigation">
+                <a href="../">Home</a>
+                <a href="../about.html">About</a>
+                <a href="../contact.html">Contact</a>
+                <a href="../archive.html">Archive</a>
+            </div>
+        </div>
+
+        <div id="content">
+            <h1>Category Theory in Code: What is a Category</h1>
+
+            <div class="info">
+    Posted on March 27, 2015
+    
+        by LuneTron
+    
+</div>
+
+<h1 id="introduction">Introduction</h1>
+<p>Category theory was developed as a generalization of mathematics itself, and so it is only natural that its literature is full of mathematically abstract language and concepts. For this reason, the standard category theory examples often fail to be useful, as they only make sense when one already understands them. That sounds paradoxical, but it’s true. For example, if you are a mathematician who works with groups on a daily basis, then it would be logical to learn category theory using examples from group theory. Thus as a programmer, it is best to learn category theory using examples from programming langauges.</p>
+<p>Starting from the beginning, consider a programming language as a whole. Looking beyond the language’s syntax, what are the basic structures the language enables you to create? How can you combine those structures to produce new ones? In Scala, for example, you can write a class and then create a trait that extends that class. Or in Java 8, you can create a lambda and then apply it to a collection. Or in Python, you can write an if-statement that conditionally executes one of two operations. Or in Haskell, you can compose two functions.</p>
+<p>Category theory is a means to express the underlying structure of certain programming languages. Many programming langauges have characteristics that can be described using category theory, and some of these languages lend themselves quite naturally to such descriptions. Two such languages are Haskell and Scala. They serve as a good examples due to the prominence therein of types and functions. Furthermore, it is useful to see side-by-side examples in two languages so one can begin to look past the syntax to the underlying concepts.</p>
+<h1 id="typed-functions">Typed Functions</h1>
+<p>Let us now begin. We’ve decided that we want to write a function named <code>foo</code>. In Python, one could write that function as follows:</p>
+<pre><code>def foo(input):
+    # return stuff here</code></pre>
+<p>What do we know about <code>foo</code>? We know that if you provide it with an <code>input</code>, it will return something. Or maybe it will just set a variable or print, and then return nothing. We’re not exactly sure.</p>
+<p>In Scala and Haskell, function signatures provide us with more information, and it is exactly this extra information that allows these languages to be described in terms of category theory. So what is this extra information? This extra information consists of two types: an input (or argument) type and a return type. In Haskell this looks like:</p>
+<pre><code>foo :: Bool -&gt; Int</code></pre>
+<p>and in Scala:</p>
+<pre><code>def foo(input: Boolean): Int</code></pre>
+<p>Each of these function signatures tells us something about <code>foo</code>, namely that it requires (or takes) a boolean as an argument and returns an integer.</p>
+<p>In practice, a function is a means to produce one type given another. In the function <code>foo</code>, we transform (or morph) from a boolean to an integer. The function implementation (which we omitted) decides how we produce the integer from the boolean.</p>
+<p>It is useful to think of a type as a way to summarize a collection of values. Instead of saying the argument of <code>foo</code> requires one of two values (true or false), we say it requires a boolean. And instead of saying the return type of <code>foo</code> could be 0 or 1 or -1 or … we say the return type is an integer.</p>
+<h1 id="more-about-types">More about Types</h1>
+<p>Now the types we have at our disposal are not just the types built in to the language. In Scala and Haskell is is possible to create your own types.</p>
+<p>For example in Scala, one can create the types <code>Animal</code>, <code>Cat</code>, and <code>Dog</code>, and then write a function that takes an <code>Animal</code> and returns a <code>Cat</code>:</p>
+<pre><code>sealed trait Animal
+final case class Cat(name: String) extends Animal
+final case object Dog(name: String) extends Animal
+
+def catify(animal: Animal): Cat = animal match {
+  case cat @ Cat(_) =&gt; cat
+  case Dog(name) =&gt; Cat(name)
+}</code></pre>
+<p>And the equivalent Haskell example:</p>
+<pre><code>lalala</code></pre>
+<h1 id="more-about-functions">More about Functions</h1>
+<p>Now consider all the Haskell (or Scala) types. This includes all the built-in types, as well as any type you could create yourself. Then for each pair of types <code>A</code> and <code>B</code>, consider all the functions from type <code>A</code> to type <code>B</code>. In Scala we have</p>
+<pre><code>type A
+type B
+def foo(a: A): B = ???</code></pre>
+<p>And in Haskell:</p>
+<pre><code>lalala - think about forall</code></pre>
+<h1 id="categories-hask-and-scal">Categories Hask and Scal</h1>
+<p>It’s now time to introduce some category theory terminology. A category consists of “objects”, “morphisms”, and “morphism composition”. In the case of a programming langauge, the objects in the category are the types, and the morphisms in the category are functions from one type to another. And morphism composition is standard function composition, namely using the output of one function as the input to another function. For example:</p>
+<pre><code>def f(a: A): B
+def g(b: B): C
+
+val a: A
+g(f(a)): C    // also written as (g compose f)(a)   TODO is this right?</code></pre>
+<p>and</p>
+<pre><code>lalala</code></pre>
+<p>In summary, all the types in a category, in conjunction with functions between those types, form a category. Sometimes it is useful to call a category be a name. The category of Haskell types is named <strong>Hask</strong>. The category of Scala types doesn’t have a popular name that I know of, so I’m going to call it <strong>Scal</strong>.</p>
+<h1 id="laws">Laws</h1>
+<p>So there we have it! Now, to ensure we’ve defined something sane, there three rules that the objects (types) and morphisms (functions) must satisfy in order to be a real category. Rules such as these are the minimal set of rules that produce a sensical construction. Here go the rules:</p>
+<ol style="list-style-type: decimal">
+<li><p>Imagine <code>f(g(h(x)))</code> …. This rule is know as the “associativity of function composition”.</p></li>
+<li><p>What if <code>f compose g</code> weren’t a function? It’s hard to imagine what that would even mean.</p></li>
+<li><p>What can we compose <code>f</code> with to produce exactly <code>f</code>?</p></li>
+</ol>
+<h1 id="a-proof-for-fun">A Proof for Fun</h1>
+<p>Lastly, we’re going to write a proof. Consider the identity function rules from (3). How many ways can you implement an identity funciton that satisfies those rules? An obvious implementation in Scala is:</p>
+<pre><code>def identity[T](a: T): T = a
+def foo[A, B](a: A): B
+
+val x: X
+foo[X, Y](identity[X](x)) == identity[Y](foo[X, Y](x))</code></pre>
+<p>and in Haskell:</p>
+<pre><code>lalala</code></pre>
+<p>The</p>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'alissapajer'; // required: replace example with your forum shortname
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+        </div>
+        <div id="footer">
+            <div id="footer-left">
+                <a href="http://alissapajer.github.io/rss.xml">RSS feed</a>
+            </div>
+            <div id="footer-right">
+                site
+                <a href="http://www.haskell.org">Haskelly</a>
+                generated by
+                <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+            </div>
+        </div>
+    </body>
+</html>
