@@ -1,5 +1,5 @@
 ---
-title: Category Theory in Code: What is a Category
+title: Category Theory in Code: What is a Category?
 author: LuneTron
 ---
 
