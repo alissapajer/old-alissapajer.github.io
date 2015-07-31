@@ -126,7 +126,7 @@ lvcreate -ay -l 100%FREE --name nixos vg
 
 ```
 mkswap -L swap /dev/mapper/vg-swap
-mkfs.ext4 L nixos /dev/mapper/vg-nixos
+mkfs.ext4 -L nixos /dev/mapper/vg-nixos
 mkfs.ext4 -L boot /dev/sda1
 swapon /dev/disk/by-label/swap
 mount /dev/disk/by-label/nixos /mnt
@@ -167,3 +167,6 @@ Now for whatever reason, my `wpa_supplicant` got itself into a stuck state. It i
 
 
 Failed to get D-Bus connection unknown error -1
+
+
+
