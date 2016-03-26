@@ -67,7 +67,8 @@ F = λxy.y</code></pre>
 <p>Proceeding with the proof of the Strip Lemma, the correct question to ask is, how do we obtain a candidate <code>N3</code>? Well, we know that <code>M</code> β-reduces to <code>N1</code> in a single step, so we’ll consider this redex and mark it in <code>M</code>. Now as we perform the multiple reductions on <code>M</code> that ultimately reduce to <code>N2</code>, we track this marked lambda term until we reach <code>N2</code>. We now perform the β-reduction on this marked term in <code>N2</code>, and that produces our candidate <code>N3</code>.</p>
 <p>Let’s make this idea of marking more formal with some notation. Specifically, to keep track of a certain redex, we’ll underline it like this: <code>(<ins>λ</ins>x.M)N</code>, and we’ll keep that lambda underlined until we β-reduce it. With this new notation, here’s an example of the Strip Lemma with actual lambda terms. (We’ll introduce <code>φ</code> in a couple of paragraphs; for now just think of it as a β-reduction.)</p>
 <div class="figure">
-<img src="../images/ChurchRosser3.png" title="ChurchRosser3" />
+<img src="../images/ChurchRosser3.png" title="ChurchRosser3" alt />
+
 </div>
 <p><strong>Details of the Proof:</strong></p>
 <p>Given that we now allow underlined lambdas in our set of allowed terms, what does this new set look like formally? Let’s call it <code><ins>𝚲</ins></code>. We’ll define it inductively, as we defined <code>𝚲</code> earlier. The first three parts of the definition will be analogous to before, defining variables, application, and abstraction. In the fourth part we will include underlined lambdas only in the case when we have an abstraction followed by an application. This is because the only lambda-terms we need to trace are ones we know will be β-reduced.</p>
@@ -76,20 +77,19 @@ F = λxy.y</code></pre>
 (iii) If x ∈ V and M ∈ <ins>𝚲</ins>, then λx.M ∈ <ins>𝚲</ins>. 
 (iv) If x ∈ V and M, N ∈ <ins>𝚲</ins>, then (<ins>λ</ins>x.M)N ∈ <ins>𝚲</ins>.
 </code></pre>
-
 <p>Consider the following diagram. Note that the front rectangle is the same as the diagram in the statement of the Strip Lemma. The other terms, namely <code>M'</code> and <code>N2'</code>, we construct for purposes of the proof.</p>
 <div class="figure">
-<img src="../images/ChurchRosser4.png" title="ChurchRosser4" />
+<img src="../images/ChurchRosser4.png" title="ChurchRosser4" alt />
+
 </div>
 <p>We construct <code>M'</code> to be equivalent to <code>M</code>, except that in it we underlined the <code>λ</code> that was reduced to obtain <code>N1</code>. The function <code>ψ: <ins>𝚲</ins> -&gt; 𝚲</code> simply erases all underlines, so that</p>
 <pre><code>ψ((<ins>λ</ins>x.M)N) = (λx.ψ(M))ψ(N)</code></pre>
-
 <p>We can now apply beta-reductions to <code>M'</code>, analogous to those applied to <code>M</code>, in order to obtain <code>N2'</code>. And now to formally obtain <code>N3</code>, we apply the function <code>φ: <ins>𝚲</ins> -&gt; 𝚲</code> to <code>N2'</code>. And what is <code>φ</code>? <code>φ</code> is exactly what you’d expect: a function that β-reduces all underlined terms and keeps all others the same, meaning that</p>
 <pre><code>φ((<ins>λ</ins>x.M)N) = φ(M)[x := φ(N)]</code></pre>
-
 <p>Now that we have our candidate <code>N3</code>, we only need to prove that we can draw solid lines in place of the dotted ones. I will outline a proof showing that <code>N2</code> β-reduces to <code>N3</code> and will leave the other part of the proof as an exercise for the reader. We will outline a proof of the following diagram, which is the front triangle in the previous diagram.</p>
 <div class="figure">
-<img src="../images/ChurchRosser5.png" title="ChurchRosser5" />
+<img src="../images/ChurchRosser5.png" title="ChurchRosser5" alt />
+
 </div>
 <p>In order to prove this, we will use the method of structural induction. Recall that initially we constructed <code>𝚲</code> inductively. Thus in order to prove something general about all elements of <code>𝚲</code>, we can use an induction technique that mimics the way in which we define <code>𝚲</code>. This is called induction on the structure of <code>𝚲</code>. Though note that in our case, <code>A ∈ <ins>𝚲</ins></code>, so we’ll use induction on the structure of <code><ins>𝚲</ins></code>.</p>
 <p>First, the base case:</p>
@@ -105,20 +105,6 @@ F = λxy.y</code></pre>
 <p>And that’s the outline of the proof of the Strip Lemma!</p>
 <p><strong>Conclusion:</strong></p>
 <p>In summary, we gave the definition for a lambda-term, considered the <code>Ω</code>-combinator as an example of a lambda-term without a normal form, and outlined a proof of the Church-Rosser Theorem. So what does Church-Rosser tell us? If a term has a normal form, then that normal form is unique. This means that if we evaluate a function using two different strategies, the results will be equal. Of course, this doesn’t guarantee that every evaluation strategy will terminate. But one thing we know for certain: if we do obtain a result, then that result is unique.</p>
-
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-    var disqus_shortname = 'alissapajer'; // required: replace example with your forum shortname
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
         </div>
         <div id="footer">
