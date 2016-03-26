@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"
     xmlns:dc="http://purl.org/dc/elements/1.1/">
     <channel>
-        <title>LuneBlog</title>
+        <title>AlissaBlog</title>
         <link>http://alissapajer.github.io</link>
         <description><![CDATA[code etc.]]></description>
         <atom:link href="http://alissapajer.github.io/rss.xml" rel="self"
@@ -14,7 +14,7 @@
     <description><![CDATA[<div class="info">
     Posted on March 26, 2016
     
-        by LuneTron
+        by Alissa
     
 </div>
 
@@ -42,7 +42,7 @@
     <description><![CDATA[<div class="info">
     Posted on June 19, 2014
     
-        by LuneTron
+        by Alissa
     
 </div>
 
@@ -59,7 +59,7 @@
     <description><![CDATA[<div class="info">
     Posted on March 15, 2014
     
-        by LuneTron
+        by Alissa
     
 </div>
 
@@ -160,7 +160,7 @@ zipSum xs ys = map summed (zip xs ys)
     <description><![CDATA[<div class="info">
     Posted on February 22, 2014
     
-        by LuneTron
+        by Alissa
     
 </div>
 
@@ -199,7 +199,7 @@ myFlip f y x = f x y</code></pre>
     <description><![CDATA[<div class="info">
     Posted on February 19, 2014
     
-        by LuneTron
+        by Alissa
     
 </div>
 
@@ -264,7 +264,7 @@ myFlip f y x = f x y</code></pre>
     <description><![CDATA[<div class="info">
     Posted on February  8, 2014
     
-        by LuneTron
+        by Alissa
     
 </div>
 
@@ -298,7 +298,7 @@ $ cabal install hakyll</code></pre>
     <description><![CDATA[<div class="info">
     Posted on February  3, 2014
     
-        by LuneTron
+        by Alissa
     
 </div>
 
@@ -314,7 +314,7 @@ $ cabal install hakyll</code></pre>
     <description><![CDATA[<div class="info">
     Posted on March 26, 2013
     
-        by LuneTron
+        by Alissa
     
 </div>
 
